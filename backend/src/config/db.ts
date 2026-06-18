@@ -16,6 +16,7 @@ export function getDb(): Client {
 
 export async function initDb(): Promise<void> {
   const db = getDb();
+
   await db.execute(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -24,5 +25,19 @@ export async function initDb(): Promise<void> {
       created_at TEXT DEFAULT (datetime('now'))
     )
   `);
+
+  const existing = await db.execute("SELECT COUNT(*) as count FROM users");
+  const count = Number(existing.rows[0]?.count ?? 0);
+
+  if (count === 0) {
+    await db.execute(`
+      INSERT INTO users (name, email) VALUES
+        ('Alice Johnson', 'alice@example.com'),
+        ('Bob Smith', 'bob@example.com'),
+        ('Charlie Brown', 'charlie@example.com')
+    `);
+    console.log("Seed users inserted");
+  }
+
   console.log("Database tables initialized");
 }
