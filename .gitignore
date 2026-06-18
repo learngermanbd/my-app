@@ -43,3 +43,19 @@ Thumbs.db
 
 # Coverage
 coverage/
+
+# Android Studio
+*.iml
+.gradle/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+.navigation/
+*.hprof
