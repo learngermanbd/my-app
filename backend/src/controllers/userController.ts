@@ -106,3 +106,92 @@ export async function createUser(
     next(err);
   }
 }
+
+export async function updateUser(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id) || id < 1) {
+      res.status(400).json({ error: { message: "Invalid user ID" } });
+      return;
+    }
+
+    const { name, email } = req.body;
+    const db = getDb();
+
+    const existing = await db.execute({ sql: "SELECT id FROM users WHERE id = ?", args: [id] });
+    if (existing.rows.length === 0) {
+      res.status(404).json({ error: { message: "User not found" } });
+      return;
+    }
+
+    if (name !== undefined && typeof name !== "string") {
+      res.status(400).json({ error: { message: "Name must be a string" } });
+      return;
+    }
+    if (email !== undefined && typeof email !== "string") {
+      res.status(400).json({ error: { message: "Email must be a string" } });
+      return;
+    }
+
+    if (name || email) {
+      const updates: string[] = [];
+      const args: (string | number)[] = [];
+      if (name) { updates.push("name = ?"); args.push(name); }
+      if (email) { updates.push("email = ?"); args.push(email); }
+      args.push(id);
+
+      const result = await db.execute({
+        sql: `UPDATE users SET ${updates.join(", ")} WHERE id = ? RETURNING *`,
+        args,
+      });
+
+      const row = result.rows[0];
+      res.json({
+        user: {
+          id: Number(row.id),
+          name: String(row.name),
+          email: String(row.email),
+          created_at: String(row.created_at),
+        },
+      });
+    } else {
+      res.status(400).json({ error: { message: "At least one field (name or email) is required" } });
+    }
+  } catch (err) {
+    if (err instanceof Error && err.message.includes("UNIQUE constraint")) {
+      res.status(409).json({ error: { message: "Email already exists" } });
+      return;
+    }
+    next(err);
+  }
+}
+
+export async function deleteUser(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id) || id < 1) {
+      res.status(400).json({ error: { message: "Invalid user ID" } });
+      return;
+    }
+
+    const db = getDb();
+    const result = await db.execute({ sql: "DELETE FROM users WHERE id = ? RETURNING *", args: [id] });
+
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: { message: "User not found" } });
+      return;
+    }
+
+    res.json({ message: "User deleted" });
+  } catch (err) {
+    next(err);
+  }
+}
