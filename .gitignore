@@ -1,2 +1,45 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.apk
+*.aab
+
+# Expo
+.expo/
+.expo-shared/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Environment
 .env
+.env.local
+.env.*.local
 render.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Metro
+.metro-health-check*
+
+# Coverage
+coverage/
