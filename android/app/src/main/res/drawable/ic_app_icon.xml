@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Background circle -->
+    <path
+        android:fillColor="#0A0A0F"
+        android:pathData="M54,54m-54,0a54,54 0,1 1,108 0a54,54 0,1 1,-108 0" />
+    <!-- Inner circle with gradient approximation -->
+    <path
+        android:fillColor="#12121A"
+        android:pathData="M54,54m-46,0a46,46 0,1 1,92 0a46,46 0,1 1,-92 0" />
+    <!-- "S" letter shape -->
+    <path
+        android:fillColor="#00E676"
+        android:pathData="M47,38C47,34 50,31 54,31C58,31 61,34 61,38C61,42 58,45 54,45L47,45C43,45 40,48 40,52C40,56 43,59 47,59L58,59C60,59 62,57 62,55"
+        android:strokeWidth="3.5"
+        android:strokeColor="#00E676"
+        android:fillAlpha="0"
+        android:strokeLineCap="round" />
+    <!-- Top curve "S" -->
+    <path
+        android:fillColor="#00E676"
+        android:pathData="M40,52C40,48 43,45 47,45L54,45C58,45 61,42 61,38"
+        android:strokeWidth="3.5"
+        android:strokeColor="#00E676"
+        android:fillAlpha="0"
+        android:strokeLineCap="round" />
+</vector>

@@ -1,0 +1,21 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="star-sports-1" tvg-name="Star Sports 1 HD" tvg-logo="" group-title="Cricket",Star Sports 1 HD
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="star-sports-2" tvg-name="Star Sports 2 HD" tvg-logo="" group-title="Cricket",Star Sports 2 HD
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="willow" tvg-name="Willow TV" tvg-logo="" group-title="Cricket",Willow TV
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="sky-sports" tvg-name="Sky Sports Football" tvg-logo="" group-title="Football",Sky Sports Football
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="bein-sports" tvg-name="beIN Sports 1" tvg-logo="" group-title="Football",beIN Sports 1
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="espn" tvg-name="ESPN HD" tvg-logo="" group-title="Football",ESPN HD
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="ten-sports" tvg-name="TEN Sports" tvg-logo="" group-title="Sports",TEN Sports
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="sony-six" tvg-name="Sony SIX" tvg-logo="" group-title="Sports",Sony SIX
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="eurosport" tvg-name="Eurosport 1" tvg-logo="" group-title="Sports",Eurosport 1
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="sports-18" tvg-name="Sports 18" tvg-logo="" group-title="Sports",Sports 18
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8

@@ -1,0 +1,20 @@
+{
+  "name": "streamapp-backend",
+  "version": "1.0.0",
+  "description": "Live sports streaming API server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "seed": "node seed.js",
+    "bot": "node telegram-bot.js",
+    "health": "node stream-health.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "node-telegram-bot-api": "^1.1.0"
+  }
+}

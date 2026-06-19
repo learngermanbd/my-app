@@ -1,0 +1,31 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="star-sports-1" tvg-name="Star Sports 1 HD" tvg-logo="https://example.com/logos/star-sports-1.png" group-title="Cricket",Star Sports 1 HD
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="star-sports-2" tvg-name="Star Sports 2 HD" tvg-logo="https://example.com/logos/star-sports-2.png" group-title="Cricket",Star Sports 2 HD
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="sky-sports" tvg-name="Sky Sports Football" tvg-logo="https://example.com/logos/sky-sports.png" group-title="Football",Sky Sports Football
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="bein-sports" tvg-name="beIN Sports 1" tvg-logo="https://example.com/logos/bein.png" group-title="Football",beIN Sports 1
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="espn" tvg-name="ESPN HD" group-title="Sports",ESPN HD
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="willow" tvg-name="Willow TV" group-title="Cricket",Willow TV
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="news-24" tvg-name="News 24 Live" group-title="News",News 24 Live
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="discovery" tvg-name="Discovery Channel" group-title="Entertainment",Discovery Channel
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="nat-geo" tvg-name="National Geographic" group-title="Entertainment",National Geographic
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="cartoon" tvg-name="Cartoon Network" tvg-logo="" group-title="Kids",Cartoon Network
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="sony-max" tvg-name="Sony MAX" group-title="Entertainment",Sony MAX
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="cnn" tvg-name="CNN International" group-title="News",CNN International
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="bbc" tvg-name="BBC World News" group-title="News",BBC World News
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="ten-sports" tvg-name="TEN Sports" group-title="Sports",TEN Sports
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="mtv" tvg-name="MTV Hits" group-title="Music",MTV Hits
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
