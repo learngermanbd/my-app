@@ -176,3 +176,33 @@ c6bc1de Rebuild full codebase after wipe
 
 **Live URL:** `https://my-app-gvd3.onrender.com`
 **Latest commit:** `a5c4d86`
+
+---
+
+## June 19, 2026 — APK Builds & GitHub Release
+
+### Build Fix: JDK Compatibility
+- **Problem:** JDK 25 only JDK installed, incompatible with AGP 8.2.0 (jlink.exe failures)
+- **Fix 1:** Downloaded JDK 21 LTS (`C:/Program Files/Eclipse Adoptium/jdk-21.0.11+10`)
+- **Fix 2:** Upgraded AGP 8.2.0 → 8.7.3, Kotlin 1.9.20 → 2.0.21, Gradle 8.5 → 8.11.1, compileSdk 34→35
+
+### APKs Built
+| App | Size |
+|-----|------|
+| MyApp-Base-v1.apk | 5.9 MB |
+| MyApp-Admin-v1.apk | 6.7 MB |
+
+### GitHub Release
+- **Tag:** v1.0.0
+- **Repo:** learngermanbd/my-app
+- **Release ID:** 341709760
+- Both APKs attached
+
+### Build Commands (for any PC)
+```bash
+export JAVA_HOME="C:/Program Files/Eclipse Adoptium/jdk-21.0.11+10"
+cd mobile/base-app && ./gradlew.bat assembleDebug
+cd mobile/admin-app && ./gradlew.bat assembleDebug
+```
+
+**Commit:** `5689843` — AGP/Kotlin/Gradle upgrade
