@@ -205,6 +205,8 @@ cd mobile/base-app && ./gradlew.bat assembleDebug
 cd mobile/admin-app && ./gradlew.bat assembleDebug
 ```
 
+**Commit:** `5689843` — AGP/Kotlin/Gradle upgrade
+
 ---
 
 ## June 19, 2026 — CI Setup
