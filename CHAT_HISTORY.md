@@ -117,3 +117,19 @@ c6bc1de Rebuild full codebase after wipe
 ---
 
 *Managed by Codebuff — always update after significant changes*
+
+---
+
+## June 18, 2026 (late) — Project Rules Established
+
+**New rules for all agents:**
+- **Deletions:** Files are never permanently deleted. Use `mv` to `_trash/` folder instead of `rm -rf`.
+- **CHAT_HISTORY.md:** Must be updated after every chat/task completion.
+
+### Session: Android App Audit
+- Audited all Kotlin source files in `mobile/base-app/` and `mobile/admin-app/`
+- **Result:** No bugs found. 4 minor UX findings (date force-unwrap, empty Bearer token edge case, no retry button on Dashboard, no retry on MainActivity first load)
+- All resources, imports, permissions, view bindings verified correct
+- Both apps wired to `https://my-app-gvd3.onrender.com/api`
+
+**Commit:** `ab3590b` — Native Android apps (Kotlin)

@@ -59,3 +59,4 @@ gen/
 out/
 .navigation/
 *.hprof
+_trash/
