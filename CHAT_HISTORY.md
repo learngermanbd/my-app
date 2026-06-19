@@ -133,3 +133,46 @@ c6bc1de Rebuild full codebase after wipe
 - Both apps wired to `https://my-app-gvd3.onrender.com/api`
 
 **Commit:** `ab3590b` — Native Android apps (Kotlin)
+
+---
+
+## June 19, 2026 — Android Build Fixes
+
+### Issue 1: Gradle 9.x Incompatibility
+- **Error:** `org/gradle/api/internal/HasConvention` — `HasConvention` removed in Gradle 9.0
+- **Root cause:** System Gradle 9.3.0 incompatible with AGP 8.2.0 + Kotlin 1.9.20
+- **Fix:** Added Gradle wrapper files pinning to Gradle 8.5:
+  - `gradle/wrapper/gradle-wrapper.properties` → `gradle-8.5-bin.zip`
+  - `gradle/wrapper/gradle-wrapper.jar` (binary, committed to git)
+  - `gradlew.bat` — Windows wrapper launch script
+- **Research:** AGP 9.1+ would be needed for Gradle 9.x compatibility (major upgrade)
+- **Commit:** `0a188f5` + `5b5c3d2`
+
+### Issue 2: Missing Launcher Icons
+- **Error:** `AAPT: error: resource mipmap/ic_launcher not found`
+- **Fix:** Created adaptive icon XML with vector drawable foregrounds:
+  - `res/drawable/ic_launcher_foreground.xml` — vector circle icon (base), vector shield icon (admin)
+  - `res/mipmap-anydpi-v26/ic_launcher.xml` — adaptive-icon with @color/primary background
+- **Commit:** `a5c4d86`
+
+### Project Rules (Established June 18)
+- **Deletions → Recycle Bin:** Move to `_trash/` folder, never `rm -rf`
+- **CHAT_HISTORY.md:** Updated after every task, committed with code
+
+---
+
+## Current State Summary
+
+| Component | Status |
+|-----------|:------:|
+| Backend (Express + TypeScript) | ✅ Live on Render |
+| Turso DB | ✅ Connected + seeded |
+| All 6 CRUD endpoints | ✅ Tested |
+| Health ping (cron-job.org) | ✅ Every 10 min |
+| Base Android App | ✅ Source complete, ready to build |
+| Admin Android App | ✅ Source complete, ready to build |
+| Gradle wrapper | ✅ Pinned to 8.5 |
+| Launcher icons | ✅ Adaptive XML icons |
+
+**Live URL:** `https://my-app-gvd3.onrender.com`
+**Latest commit:** `a5c4d86`
