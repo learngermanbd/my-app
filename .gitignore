@@ -1,0 +1,28 @@
+# Android build outputs
+android/app/build/
+android-admin/app/build/
+android/.gradle/
+android-admin/.gradle/
+android/build/
+android-admin/build/
+android/local.properties
+android-admin/local.properties
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+backend/node_modules/
+
+# APK files (kept in releases, not in repo)
+*.apk
+
+# Gradle
+*.class
+*.log

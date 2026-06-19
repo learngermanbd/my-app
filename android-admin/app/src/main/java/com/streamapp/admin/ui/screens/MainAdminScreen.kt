@@ -86,7 +86,7 @@ fun MainAdminScreen(
                         color = if (selected) PrimaryDim else Color.Transparent
                     ) {
                         Row(modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Icon(tab.icon, null, tint = if (selected) Primary else TextTertiary, modifier = Modifier.size(14.dp))
+                            Icon(tab.icon, tab.label, tint = if (selected) Primary else TextTertiary, modifier = Modifier.size(14.dp))
                             Spacer(Modifier.width(4.dp))
                             Text(tab.label, color = if (selected) Primary else TextSecondary, fontSize = 11.sp, fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal)
                         }
@@ -193,7 +193,7 @@ fun DashboardTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.coro
                         onClick = { scope.launch { loadDashboard() } },
                         colors = ButtonDefaults.buttonColors(containerColor = Surface2),
                         shape = RoundedCornerShape(8.dp)
-                    ) { Icon(Icons.Rounded.Refresh, null, modifier = Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Refresh", fontSize = 12.sp) }
+                    ) { Icon(Icons.Rounded.Refresh, "Refresh", modifier = Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Refresh", fontSize = 12.sp) }
                     Button(
                         onClick = {
                             checkingHealth = true; scope.launch {
@@ -205,7 +205,7 @@ fun DashboardTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.coro
                         colors = ButtonDefaults.buttonColors(containerColor = Surface2),
                         shape = RoundedCornerShape(8.dp)
                     ) { if (checkingHealth) CircularProgressIndicator(Modifier.size(16.dp), strokeWidth = 2.dp, color = Primary)
-                        else { Icon(Icons.Rounded.Favorite, null, modifier = Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Health Check", fontSize = 12.sp) } }
+                        else { Icon(Icons.Rounded.Favorite, "Favorite", modifier = Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Health Check", fontSize = 12.sp) } }
                 }
             }
             item {
@@ -261,7 +261,7 @@ fun CategoriesTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.cor
                 Text("Categories (${cats.size})", color = TextPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                 Button(onClick = { editCat = null; catName = ""; catSlug = ""; catIcon = ""; catOrder = "0"; showDialog = true },
                     colors = ButtonDefaults.buttonColors(containerColor = Primary), shape = RoundedCornerShape(8.dp)) {
-                    Icon(Icons.Rounded.Add, null, Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Add", fontSize = 12.sp) }
+                    Icon(Icons.Rounded.Add, "Add", Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Add", fontSize = 12.sp) }
             }
         }
         if (loading) item { Box(Modifier.fillMaxWidth().padding(40.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(color = Primary) } }
@@ -272,8 +272,8 @@ fun CategoriesTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.cor
                         Text(cat.name, color = TextPrimary, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
                         Text("slug: ${cat.slug}  •  ${cat.channelCount} channels", color = TextTertiary, fontSize = 11.sp)
                     }
-                    IconButton(onClick = { editCat = cat; catName = cat.name; catSlug = cat.slug; catIcon = cat.iconUrl ?: ""; catOrder = "${cat.sortOrder}"; showDialog = true }) { Icon(Icons.Rounded.Edit, "Edit", tint = TextSecondary, Modifier.size(18.dp)) }
-                    IconButton(onClick = { scope.launch { try { api.deleteCategory(cat.id); cats = api.getCategories().body() ?: emptyList(); snackbar.showSnackbar("Deleted ${cat.name}") } catch (e: Exception) { snackbar.showSnackbar("Error: ${e.message}") } } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, Modifier.size(18.dp)) }
+                    IconButton(onClick = { editCat = cat; catName = cat.name; catSlug = cat.slug; catIcon = cat.iconUrl ?: ""; catOrder = "${cat.sortOrder}"; showDialog = true }) { Icon(Icons.Rounded.Edit, "Edit", tint = TextSecondary, modifier = Modifier.size(18.dp)) }
+                    IconButton(onClick = { scope.launch { try { api.deleteCategory(cat.id); cats = api.getCategories().body() ?: emptyList(); snackbar.showSnackbar("Deleted ${cat.name}") } catch (e: Exception) { snackbar.showSnackbar("Error: ${e.message}") } } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, modifier = Modifier.size(18.dp)) }
                 }
             }
         }
@@ -327,7 +327,7 @@ fun ChannelsTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.corou
                 )
                 Button(onClick = { editCh = null; chName = ""; chCat = cats.firstOrNull()?.id ?: 0; chLive = false; chFeatured = false; showDialog = true },
                     colors = ButtonDefaults.buttonColors(containerColor = Primary), shape = RoundedCornerShape(8.dp)) {
-                    Icon(Icons.Rounded.Add, null, Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Add", fontSize = 12.sp) }
+                    Icon(Icons.Rounded.Add, "Add", Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Add", fontSize = 12.sp) }
             }
         }
         if (loading) item { Box(Modifier.fillMaxWidth().padding(40.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(color = Primary) } }
@@ -338,12 +338,12 @@ fun ChannelsTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.corou
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(ch.name, color = TextPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
                             if (ch.isLive == 1) { Spacer(Modifier.width(6.dp)); Text("LIVE", color = LiveRed, fontSize = 9.sp, fontWeight = FontWeight.Bold) }
-                            if (ch.featured == 1) { Spacer(Modifier.width(4.dp)); Icon(Icons.Rounded.Star, null, tint = Warning, Modifier.size(12.dp)) }
+                            if (ch.featured == 1) { Spacer(Modifier.width(4.dp)); Icon(Icons.Rounded.Star, "Featured", tint = Warning, modifier = Modifier.size(12.dp)) }
                         }
                         Text("${ch.categoryName}  •  ${ch.healthyLinks}/${ch.totalLinks} healthy", color = TextTertiary, fontSize = 10.sp)
                     }
-                    IconButton(onClick = { editCh = ch; chName = ch.name; chCat = ch.categoryId; chLive = ch.isLive == 1; chFeatured = ch.featured == 1; showDialog = true }) { Icon(Icons.Rounded.Edit, "Edit", tint = TextSecondary, Modifier.size(18.dp)) }
-                    IconButton(onClick = { scope.launch { try { api.deleteChannel(ch.id); channels = api.getAdminChannels().body() ?: emptyList(); snackbar.showSnackbar("Deleted") } catch (e: Exception) { snackbar.showSnackbar("Error") } } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, Modifier.size(18.dp)) }
+                    IconButton(onClick = { editCh = ch; chName = ch.name; chCat = ch.categoryId; chLive = ch.isLive == 1; chFeatured = ch.featured == 1; showDialog = true }) { Icon(Icons.Rounded.Edit, "Edit", tint = TextSecondary, modifier = Modifier.size(18.dp)) }
+                    IconButton(onClick = { scope.launch { try { api.deleteChannel(ch.id); channels = api.getAdminChannels().body() ?: emptyList(); snackbar.showSnackbar("Deleted") } catch (e: Exception) { snackbar.showSnackbar("Error") } } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, modifier = Modifier.size(18.dp)) }
                 }
             }
         }
@@ -445,7 +445,7 @@ fun EventsTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.corouti
                 Text("Live Events (${events.size})", color = TextPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                 Button(onClick = { editEv = null; evTitle = ""; evLive = true; showDialog = true },
                     colors = ButtonDefaults.buttonColors(containerColor = Primary), shape = RoundedCornerShape(8.dp)) {
-                    Icon(Icons.Rounded.Add, null, Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Add", fontSize = 12.sp) }
+                    Icon(Icons.Rounded.Add, "Add", Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Add", fontSize = 12.sp) }
             }
         }
         if (loading) item { Box(Modifier.fillMaxWidth().padding(40.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(color = Primary) } }
@@ -459,8 +459,8 @@ fun EventsTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.corouti
                         }
                         Text("${ev.channelName ?: "No channel"}  •  ${ev.startsAt ?: ""}", color = TextTertiary, fontSize = 10.sp)
                     }
-                    IconButton(onClick = { editEv = ev; evTitle = ev.title; evLive = ev.isLive == 1; showDialog = true }) { Icon(Icons.Rounded.Edit, "Edit", tint = TextSecondary, Modifier.size(18.dp)) }
-                    IconButton(onClick = { scope.launch { try { api.deleteEvent(ev.id); events = api.getLive().body()?.events ?: emptyList(); snackbar.showSnackbar("Deleted") } catch (e: Exception) {} } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, Modifier.size(18.dp)) }
+                    IconButton(onClick = { editEv = ev; evTitle = ev.title; evLive = ev.isLive == 1; showDialog = true }) { Icon(Icons.Rounded.Edit, "Edit", tint = TextSecondary, modifier = Modifier.size(18.dp)) }
+                    IconButton(onClick = { scope.launch { try { api.deleteEvent(ev.id); events = api.getLive().body()?.events ?: emptyList(); snackbar.showSnackbar("Deleted") } catch (e: Exception) {} } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, modifier = Modifier.size(18.dp)) }
                 }
             }
         }
@@ -497,7 +497,7 @@ fun ConfigTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.corouti
                 Text("Configuration", color = TextPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                 Button(onClick = { cfgKey = ""; cfgVal = ""; showDialog = true },
                     colors = ButtonDefaults.buttonColors(containerColor = Primary), shape = RoundedCornerShape(8.dp)) {
-                    Icon(Icons.Rounded.Add, null, Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Add", fontSize = 12.sp) }
+                    Icon(Icons.Rounded.Add, "Add", Modifier.size(16.dp)); Spacer(Modifier.width(4.dp)); Text("Add", fontSize = 12.sp) }
             }
         }
         if (loading) item { Box(Modifier.fillMaxWidth().padding(40.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(color = Primary) } }
@@ -506,8 +506,8 @@ fun ConfigTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.corouti
                 Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(item.key, color = Primary, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.width(140.dp))
                     Text(item.value, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.weight(1f), maxLines = 2, overflow = TextOverflow.Ellipsis)
-                    IconButton(onClick = { cfgKey = item.key; cfgVal = item.value; showDialog = true }) { Icon(Icons.Rounded.Edit, "Edit", tint = TextSecondary, Modifier.size(18.dp)) }
-                    IconButton(onClick = { scope.launch { try { api.deleteConfig(item.key); config = api.getConfig().body() ?: emptyList() } catch (_: Exception) {} } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, Modifier.size(18.dp)) }
+                    IconButton(onClick = { cfgKey = item.key; cfgVal = item.value; showDialog = true }) { Icon(Icons.Rounded.Edit, "Edit", tint = TextSecondary, modifier = Modifier.size(18.dp)) }
+                    IconButton(onClick = { scope.launch { try { api.deleteConfig(item.key); config = api.getConfig().body() ?: emptyList() } catch (_: Exception) {} } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, modifier = Modifier.size(18.dp)) }
                 }
             }
         }
@@ -594,8 +594,8 @@ fun SchedulesTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.coro
                         Text(s.url, color = TextTertiary, fontSize = 10.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                     }
                     Text(if (s.isActive == 1) "Active" else "Paused", color = if (s.isActive == 1) Primary else TextTertiary, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                    IconButton(onClick = { scope.launch { try { api.runSchedule(s.id); snackbar.showSnackbar("Schedule triggered") } catch (_: Exception) {} } }) { Icon(Icons.Rounded.PlayArrow, "Run", tint = Primary, Modifier.size(18.dp)) }
-                    IconButton(onClick = { scope.launch { try { api.deleteSchedule(s.id); schedules = api.getSchedules().body() ?: emptyList(); snackbar.showSnackbar("Deleted") } catch (_: Exception) {} } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, Modifier.size(18.dp)) }
+                    IconButton(onClick = { scope.launch { try { api.runSchedule(s.id); snackbar.showSnackbar("Schedule triggered") } catch (_: Exception) {} } }) { Icon(Icons.Rounded.PlayArrow, "Run", tint = Primary, modifier = Modifier.size(18.dp)) }
+                    IconButton(onClick = { scope.launch { try { api.deleteSchedule(s.id); schedules = api.getSchedules().body() ?: emptyList(); snackbar.showSnackbar("Deleted") } catch (_: Exception) {} } }) { Icon(Icons.Rounded.Delete, "Delete", tint = LiveRed, modifier = Modifier.size(18.dp)) }
                 }
             }
         }
@@ -630,7 +630,7 @@ fun CrashLogsTab(api: AdminApi, snackbar: SnackbarHostState, scope: kotlinx.coro
                             Text(msg, color = TextPrimary, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         }
                         Text(log.deviceId ?: "", color = TextTertiary, fontSize = 10.sp)
-                        Icon(Icons.Rounded.ChevronRight, null, tint = TextTertiary, Modifier.size(18.dp))
+                        Icon(Icons.Rounded.ChevronRight, "More", tint = TextTertiary, modifier = Modifier.size(18.dp))
                     }
                 }
             }
